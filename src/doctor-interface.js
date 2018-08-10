@@ -16,7 +16,7 @@ $(document).ready(function(){
       let doctor = JSON.parse(response);
       let foundCounter = 0;
       for (let i = 0; i < doctor.data.length; i++) {
-        $('.search').append("<li>" + `${doctor.data[i].profile.first_name}  ${doctor.data[i].profile.last_name}` + "</li>");
+        $('.search').append("<li>" + `${doctor.data[i].profile.first_name}  ${doctor.data[i].profile.last_name}` + "</li>" + "<ul>" + `Address:  ${doctor.data[i].practices[0].visit_address.street}, ${doctor.data[i].practices[0].visit_address.city}` + "</ul>");
         foundCounter++;
       }
       if (foundCounter === 0){
