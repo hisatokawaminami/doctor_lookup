@@ -1,5 +1,5 @@
 export class DoctorLookup{
-  constructor(){
+  findDocBySympton(){
 
   }
 }
