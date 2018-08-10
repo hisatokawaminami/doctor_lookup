@@ -11,7 +11,13 @@ $(document).ready(function(){
 
     symptonPromise.then(function(response){
       let doctor = JSON.parse(response);
-      $('.search').append(doctor.data[0].practices[0].name);
+      let foundCounter = 0;
+      for (let i = 0; i < doctor.data.length; i++) {
+          $('.search').append("<li>" + `${doctor.data[i].profile.first_name}  ${doctor.data[i].profile.last_name}` + "</li>");
+          foundCounter++;
+      }
+      $('.showCounter').text(foundCounter + ' showing');
+
     }, function(error) {
       $('.search').text(error.message);
     });
