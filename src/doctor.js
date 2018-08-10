@@ -1,8 +1,8 @@
 export class DoctorLookup{
-  findDocBySympton(sympton){
+  findDocBySympton(sympton, page){
     return new Promise(function(resolve, reject){
       let request = new XMLHttpRequest();
-      let url = `https://api.betterdoctor.com/2016-03-01/doctors?query=${sympton}&location=wa-seattle&skip=0&limit=25&user_key=${process.env.exports.apiKey}`;
+      let url = `https://api.betterdoctor.com/2016-03-01/doctors?query=${sympton}&location=wa-seattle&skip=${page}&limit=3&user_key=${process.env.exports.apiKey}`;
 
 
       request.onload = function(){

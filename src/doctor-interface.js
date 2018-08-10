@@ -4,10 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { DoctorLookup } from './../src/doctor.js';
 
 $(document).ready(function(){
+  let page = 0;
   $('#symptonSearch').click(function(){
     let sympton = $('#sympton').val();
     let doctorLookup = new DoctorLookup();
-    let symptonPromise = doctorLookup.findDocBySympton(sympton);
+    let symptonPromise = doctorLookup.findDocBySympton(sympton, page);
 
     symptonPromise.then(function(response){
       let doctor = JSON.parse(response);
@@ -21,5 +22,11 @@ $(document).ready(function(){
     }, function(error) {
       $('.search').text(error.message);
     });
+    });
+    $('#nextPage').click(function(){
+    page = page + 3;
+    console.log(page)
+    $('.search').text("");
+    $('#symptonSearch').click();
   });
 });
