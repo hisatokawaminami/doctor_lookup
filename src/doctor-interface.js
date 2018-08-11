@@ -5,14 +5,14 @@ import { DoctorLookup } from './../src/doctor.js';
 
 $(document).ready(function(){
   let page = 0;
-  $('#symptonSearch').click(function(){
+  $('#symptomSearch').click(function(){
     $('.search').text("");
     let name = $('#name').val();
-    let sympton = $('#sympton').val();
+    let symptom = $('#symptom').val();
     let doctorLookup = new DoctorLookup();
-    let symptonPromise = doctorLookup.findDocBySympton(sympton, name, page);
+    let symptomPromise = doctorLookup.findDocBySymptom(symptom, name, page);
 
-    symptonPromise.then(function(response){
+    symptomPromise.then(function(response){
       let doctor = JSON.parse(response);
       let foundCounter = 0;
       // let j = doctor.data.practices.phones.length;
@@ -48,6 +48,6 @@ $(document).ready(function(){
         page = page + 5;
         console.log(page)
         $('.search').text("");
-        $('#symptonSearch').click();
+        $('#symptomSearch').click();
       });
     });
